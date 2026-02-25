@@ -1,0 +1,140 @@
+/* ── Palette Excel/Tech ── */
+:root {
+  --bg: #0f0f0f;
+  --bg-card: #1a1a1a;
+  --bg-hover: #222;
+  --border: #2e2e2e;
+  --accent: #1d6f42; /* vert Excel */
+  --accent2: #2196a0; /* cyan Docker */
+  --accent3: #e8a317; /* ambre alerte */
+  --text: #e8e8e8;
+  --text-muted: #888;
+  --text-code: #a8d8a0;
+  --tag-bg: #0d3d24;
+  --tag-border: #1d6f42;
+  --radius: 6px;
+  --gap: 1rem;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  line-height: 1.6;
+}
+
+/* ── Typographie ── */
+h1 {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+}
+h2 {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+}
+h3 {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+code,
+pre {
+  font-family: "Cascadia Code", "Fira Code", monospace;
+  background: #111;
+  color: var(--text-code);
+  border-radius: var(--radius);
+}
+code {
+  padding: 0.1em 0.4em;
+  font-size: 0.9em;
+}
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  border-left: 3px solid var(--accent);
+}
+
+/* ── Éléments réutilisables ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+}
+
+.tag {
+  display: inline-block;
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  color: var(--accent);
+  font-size: 0.75rem;
+  padding: 0.15em 0.6em;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.tag.cyan {
+  background: #0a2e35;
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+.tag.amber {
+  background: #2e2000;
+  border-color: var(--accent3);
+  color: var(--accent3);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition:
+    filter 0.2s,
+    transform 0.15s;
+}
+.btn:hover {
+  filter: brightness(1.2);
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+.btn.green {
+  background: var(--accent);
+  color: #fff;
+}
+.btn.cyan {
+  background: var(--accent2);
+  color: #fff;
+}
+
+/* ── Barre de progression ── */
+.progress-bar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 0.4s ease;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}

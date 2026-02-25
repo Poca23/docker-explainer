@@ -1,0 +1,118 @@
+/* ── Entrée section ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.section.active {
+  animation: fadeUp 0.35s ease;
+}
+
+/* ── Pulse accent ── */
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(29, 111, 66, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(29, 111, 66, 0);
+  }
+}
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ── Flottement boîtes diagramme ── */
+@keyframes floatA {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes floatB {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.diag-box.cyan {
+  animation: floatA 3s ease-in-out infinite;
+}
+.diag-box.green {
+  animation: floatB 3.4s ease-in-out infinite;
+}
+
+/* ── Défilement flèche ── */
+@keyframes arrowBounce {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+.diag-arrow {
+  animation: arrowBounce 1.4s ease-in-out infinite;
+}
+
+/* ── Highlight code ── */
+@keyframes codeFade {
+  from {
+    background: #1a3a1a;
+  }
+  to {
+    background: #111;
+  }
+}
+pre.highlight {
+  animation: codeFade 1s ease forwards;
+}
+
+/* ── Spin loader ── */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ── Typewriter curseur ── */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Shake erreur quiz ── */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+.quiz-btn.wrong {
+  animation: shake 0.3s ease;
+}
