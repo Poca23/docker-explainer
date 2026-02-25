@@ -13,6 +13,7 @@ function init() {
     $(`sec-${id}`).classList.add("active");
     Renderer.updateProgress(index, DATA.nav.length);
 
+    if (id === "exo1") Renderer.exo1(DATA_EXO1);
     if (id === "commandes") {
       const grid = $("cmd-grid");
       if (grid && !grid.hasChildNodes())

@@ -141,4 +141,62 @@ const Renderer = {
   footer(el) {
     el.innerHTML = `<p>Pour les apprenants Docker 🐳 | © 2026 | CND - Web Is Yours</p>`;
   },
+
+  exo1(data) {
+    const rappelEl = document.getElementById("exo1-rappel");
+    if (rappelEl && !rappelEl.hasChildNodes()) {
+      rappelEl.innerHTML = data.rappel
+        .map(
+          (r) => `
+          <div class="card cmd-card" style="cursor:pointer" data-cmd="${r.cmd}" title="Cliquer pour copier">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:.4rem;margin-bottom:.4rem">
+              <span style="font-size:.7rem;color:var(--text-muted)">📋 copier</span>
+            </div>
+            <code style="font-size:.85rem;display:block;margin-bottom:.4rem">${r.cmd}</code>
+            <p style="font-size:.8rem;color:var(--text-muted)">${r.desc}</p>
+          </div>`,
+        )
+        .join("");
+
+      rappelEl.addEventListener("click", (e) => {
+        const card = e.target.closest(".cmd-card");
+        if (!card) return;
+        navigator.clipboard.writeText(card.dataset.cmd).then(() => {
+          const hint = card.querySelector("span");
+          hint.textContent = "✅ copié !";
+          setTimeout(() => (hint.textContent = "📋 copier"), 1500);
+        });
+      });
+    }
+
+    const stepsEl = document.getElementById("exo1-steps");
+    if (stepsEl && !stepsEl.hasChildNodes()) {
+      stepsEl.innerHTML = data.steps
+        .map(
+          (s) => `
+          <div class="step">
+            <div class="step-num">${s.num}</div>
+            <div>
+              <h3>${s.title} <span class="tag">${s.tag}</span></h3>
+              ${s.content}
+            </div>
+          </div>`,
+        )
+        .join("");
+    }
+
+    const bilanEl = document.getElementById("exo1-bilan");
+    if (bilanEl && !bilanEl.hasChildNodes()) {
+      bilanEl.innerHTML = data.bilan
+        .map(
+          (b) => `
+          <tr>
+            <td>${b.etape}</td>
+            <td><code>${b.cmd}</code></td>
+            <td style="text-align:center">✅</td>
+          </tr>`,
+        )
+        .join("");
+    }
+  },
 };
