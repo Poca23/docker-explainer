@@ -1,12 +1,11 @@
-/* ── Palette Excel/Tech ── */
 :root {
   --bg: #0f0f0f;
   --bg-card: #1a1a1a;
   --bg-hover: #222;
   --border: #2e2e2e;
-  --accent: #1d6f42; /* vert Excel */
-  --accent2: #2196a0; /* cyan Docker */
-  --accent3: #e8a317; /* ambre alerte */
+  --accent: #1d6f42;
+  --accent2: #2196a0;
+  --accent3: #e8a317;
   --text: #e8e8e8;
   --text-muted: #888;
   --text-code: #a8d8a0;
@@ -25,7 +24,6 @@ body {
   line-height: 1.6;
 }
 
-/* ── Typographie ── */
 h1 {
   font-size: clamp(1.4rem, 4vw, 2rem);
 }
@@ -46,20 +44,24 @@ pre {
 code {
   padding: 0.1em 0.4em;
   font-size: 0.9em;
+  word-break: break-all; /* ← fix débordement inline code */
 }
 pre {
   padding: 1rem;
   overflow-x: auto;
   border-left: 3px solid var(--accent);
+  max-width: 100%; /* ← fix débordement pre */
+  white-space: pre-wrap; /* ← wrap sur mobile */
+  word-break: break-word;
 }
 
-/* ── Éléments réutilisables ── */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.2rem;
   box-shadow: var(--shadow);
+  min-width: 0; /* ← fix débordement dans grid */
 }
 
 .tag {
@@ -73,7 +75,6 @@ pre {
   font-weight: 600;
   letter-spacing: 0.05em;
 }
-
 .tag.cyan {
   background: #0a2e35;
   border-color: var(--accent2);
@@ -113,7 +114,6 @@ pre {
   color: #fff;
 }
 
-/* ── Barre de progression ── */
 .progress-bar {
   height: 3px;
   background: var(--border);
@@ -127,7 +127,6 @@ pre {
   transition: width 0.4s ease;
 }
 
-/* ── Scrollbar ── */
 ::-webkit-scrollbar {
   width: 6px;
 }

@@ -60,6 +60,7 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 1.5rem var(--gap) 4rem;
+  overflow: hidden; /* ← fix débordement global */
 }
 
 /* ── Section ── */
@@ -73,7 +74,10 @@
 /* ── Grid 2 colonnes ── */
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(260px, 100%), 1fr)
+  ); /* ← fix mobile */
   gap: var(--gap);
   margin-top: var(--gap);
 }
@@ -85,7 +89,6 @@
   gap: 0.8rem;
   margin-top: var(--gap);
 }
-
 .step {
   display: flex;
   gap: 1rem;
@@ -95,11 +98,11 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: border-color 0.2s;
+  min-width: 0; /* ← fix flex overflow */
 }
 .step:hover {
   border-color: var(--accent2);
 }
-
 .step-num {
   flex-shrink: 0;
   width: 32px;
@@ -113,6 +116,10 @@
   font-weight: 700;
   font-size: 0.9rem;
 }
+.step > div {
+  min-width: 0;
+  overflow: hidden;
+} /* ← fix texte step */
 
 /* ── Comparatif table ── */
 .compare-table {
@@ -120,12 +127,15 @@
   border-collapse: collapse;
   margin-top: var(--gap);
   font-size: 0.9rem;
+  display: block; /* ← permet overflow-x */
+  overflow-x: auto;
 }
 .compare-table th,
 .compare-table td {
   border: 1px solid var(--border);
   padding: 0.6rem 0.8rem;
   text-align: left;
+  white-space: nowrap; /* ← garde lisible sur mobile */
 }
 .compare-table th {
   background: var(--tag-bg);
@@ -138,7 +148,7 @@
   background: var(--bg-hover);
 }
 
-/* ── Animation diagram ── */
+/* ── Diagram ── */
 .diagram {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -151,7 +161,6 @@
   gap: 1rem;
   overflow: hidden;
 }
-
 .diag-row {
   display: flex;
   flex-wrap: wrap;
@@ -159,7 +168,6 @@
   align-items: center;
   gap: 0.6rem;
 }
-
 .diag-box {
   border-radius: var(--radius);
   padding: 0.6rem 1rem;
@@ -185,7 +193,6 @@
   border-color: var(--border);
   color: var(--text-muted);
 }
-
 .diag-arrow {
   color: var(--text-muted);
   font-size: 1.4rem;
@@ -213,6 +220,7 @@
   color: var(--text);
   background: var(--bg-card);
   transition: all 0.2s;
+  width: 100%; /* ← pleine largeur */
 }
 .quiz-btn:hover:not(:disabled) {
   border-color: var(--accent2);
@@ -235,4 +243,39 @@
   color: var(--text-muted);
   font-size: 0.8rem;
   border-top: 1px solid var(--border);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  :root {
+    --gap: 0.75rem;
+  }
+  #header {
+    padding: 0.6rem var(--gap);
+  }
+  .header-logo svg {
+    width: 26px;
+    height: 26px;
+  }
+  #progress-wrap {
+    display: none;
+  }
+  #main {
+    padding: 1rem var(--gap) 3rem;
+  }
+  .diag-box {
+    min-width: 70px;
+    font-size: 0.78rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-pill {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
 }
