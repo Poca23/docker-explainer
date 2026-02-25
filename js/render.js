@@ -139,6 +139,6 @@ const Renderer = {
   },
 
   footer(el) {
-    el.innerHTML = `<p>🐳 Docker Guide | CND | CDA 2026–2027</p>`;
+    el.innerHTML = `<p>Pour les apprenants Docker 🐳 | © 2026 | CND - Web Is Yours</p>`;
   },
 };
