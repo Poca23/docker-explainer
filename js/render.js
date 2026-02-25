@@ -56,17 +56,36 @@ const Renderer = {
   },
 
   commands(gridEl, commands, tagColors) {
-    gridEl.innerHTML = commands
+    // Grouper par tag
+    const groups = {};
+    commands.forEach((c) => {
+      if (!groups[c.tag]) groups[c.tag] = [];
+      groups[c.tag].push(c);
+    });
+
+    gridEl.innerHTML = Object.entries(groups)
       .map(
-        (c) => `
-      <div class="card cmd-card" style="cursor:pointer" data-cmd="${c.cmd}" title="Cliquer pour copier">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:.4rem;margin-bottom:.4rem">
-          <span class="tag ${tagColors[c.tag] || ""}">${c.tag}</span>
-          <span style="font-size:.7rem;color:var(--text-muted)">📋 copier</span>
-        </div>
-        <code style="font-size:.85rem;display:block;margin-bottom:.4rem">${c.cmd}</code>
-        <p style="font-size:.8rem;color:var(--text-muted)">${c.desc}</p>
+        ([tag, cmds]) => `
+      <div style="grid-column:1/-1">
+        <h3 style="font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;
+                   color:var(--text-muted);margin-bottom:.6rem;margin-top:.4rem">
+          — ${tag} —
+        </h3>
       </div>
+      ${cmds
+        .map(
+          (c) => `
+        <div class="card cmd-card" style="cursor:pointer" data-cmd="${c.cmd}" title="Cliquer pour copier">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:.4rem;margin-bottom:.4rem">
+            <span class="tag ${tagColors[c.tag] || ""}">${c.tag}</span>
+            <span class="copy-hint" style="font-size:.7rem;color:var(--text-muted)">📋 copier</span>
+          </div>
+          <code style="font-size:.85rem;display:block;margin-bottom:.4rem">${c.cmd}</code>
+          <p style="font-size:.8rem;color:var(--text-muted)">${c.desc}</p>
+        </div>
+      `,
+        )
+        .join("")}
     `,
       )
       .join("");
@@ -74,10 +93,14 @@ const Renderer = {
     gridEl.addEventListener("click", (e) => {
       const card = e.target.closest(".cmd-card");
       if (!card) return;
-      navigator.clipboard.writeText(card.dataset.cmd).then(() => {
-        const hint = card.querySelector("span:last-child");
+      copyText(card.dataset.cmd).then(() => {
+        const hint = card.querySelector(".copy-hint");
         hint.textContent = "✅ copié !";
-        setTimeout(() => (hint.textContent = "📋 copier"), 1500);
+        hint.style.color = "var(--accent)";
+        setTimeout(() => {
+          hint.textContent = "📋 copier";
+          hint.style.color = "var(--text-muted)";
+        }, 1500);
       });
     });
   },

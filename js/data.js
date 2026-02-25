@@ -326,14 +326,50 @@ volumes:
     },
     { cmd: "docker images", desc: "Lister les images locales", tag: "info" },
     {
+      cmd: "docker inspect <id>",
+      desc: "Détails complets d'un conteneur",
+      tag: "info",
+    },
+    { cmd: "docker stats", desc: "CPU / RAM en temps réel", tag: "info" },
+    {
       cmd: "docker build -t nom .",
       desc: "Construire une image depuis le dossier",
+      tag: "build",
+    },
+    {
+      cmd: "docker build --no-cache -t nom .",
+      desc: "Rebuild sans cache",
       tag: "build",
     },
     {
       cmd: "docker run -d -p 80:80 nom",
       desc: "Lancer en arrière-plan, port 80",
       tag: "run",
+    },
+    {
+      cmd: "docker run -di --name <n> <img> bash",
+      desc: "Conteneur interactif nommé (Ubuntu)",
+      tag: "run",
+    },
+    {
+      cmd: "docker run -v <local>:<ctn> nom",
+      desc: "Bind mount dossier local",
+      tag: "run",
+    },
+    {
+      cmd: "docker exec -it <id> sh",
+      desc: "Ouvrir un shell dans le conteneur",
+      tag: "debug",
+    },
+    {
+      cmd: "docker exec -ti <id> bash",
+      desc: "Ouvrir bash (Ubuntu)",
+      tag: "debug",
+    },
+    {
+      cmd: "docker logs -f <id>",
+      desc: "Suivre les logs en direct",
+      tag: "debug",
     },
     { cmd: "docker stop <id>", desc: "Stopper un conteneur", tag: "stop" },
     {
@@ -343,14 +379,19 @@ volumes:
     },
     { cmd: "docker rmi <image>", desc: "Supprimer une image", tag: "clean" },
     {
-      cmd: "docker logs -f <id>",
-      desc: "Suivre les logs en direct",
-      tag: "debug",
+      cmd: "docker builder prune -f",
+      desc: "Vider le cache de build",
+      tag: "clean",
     },
     {
-      cmd: "docker exec -it <id> sh",
-      desc: "Ouvrir un shell dans le conteneur",
-      tag: "debug",
+      cmd: "docker system prune -af",
+      desc: "Tout nettoyer (conteneurs, images, cache)",
+      tag: "clean",
+    },
+    {
+      cmd: "docker commit <nom> <image>",
+      desc: "Sauvegarder un conteneur en image",
+      tag: "commit",
     },
     {
       cmd: "docker pull nginx:alpine",
@@ -358,9 +399,9 @@ volumes:
       tag: "hub",
     },
     {
-      cmd: "docker builder prune -f",
-      desc: "Vider le cache de build",
-      tag: "clean",
+      cmd: "docker push nom:tag",
+      desc: "Pousser une image sur Docker Hub",
+      tag: "hub",
     },
   ],
 
@@ -371,6 +412,7 @@ volumes:
     stop: "amber",
     clean: "amber",
     debug: "cyan",
+    commit: "",
     hub: "",
   },
 
