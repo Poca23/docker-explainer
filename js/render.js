@@ -139,6 +139,6 @@ const Renderer = {
   },
 
   footer(el) {
-    el.innerHTML = `<p>Docker Guide — Claire Naudin · CDA 2026–2027 · 🐳</p>`;
+    el.innerHTML = `<p>🐳 Docker Guide | CND | CDA 2026–2027</p>`;
   },
 };
