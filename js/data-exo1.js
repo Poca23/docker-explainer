@@ -1,4 +1,20 @@
 const DATA_EXO1 = {
+  consigne: {
+    objectif:
+      "Lancer un conteneur Ubuntu 24.04, installer une stack LAMP complète (Apache + MySQL + PHP + phpMyAdmin), créer un script de démarrage automatique, puis commiter l'image.",
+    config: [
+      { label: "OS hôte", val: "Linux Ubuntu 24.04" },
+      { label: "Image Docker", val: "ubuntu (latest)" },
+      { label: "Conteneur", val: "mon-ubuntu" },
+      { label: "Image finale", val: "tonprenom-lamp" },
+      { label: "Port mappé", val: "8080 → 80" },
+      {
+        label: "Bind mount",
+        val: "/home/cnd/Bureau/Projets/DevOps/Docker → /var/www/html",
+      },
+    ],
+  },
+
   rappel: [
     {
       cmd: "docker run -di --name <nom> <image>",
@@ -154,10 +170,10 @@ chmod +x /start.sh</pre>
       title: "Commiter l'image",
       tag: "commit",
       content: `
-        <pre>docker commit mon-ubuntu claire-lamp</pre>
+        <pre>docker commit mon-ubuntu tonprenom-lamp</pre>
         <p>Vérification :</p>
         <pre>docker images</pre>
-        <p><span class="tag">✅ Ton image <code>claire-lamp</code> apparaît dans la liste</span></p>`,
+        <p><span class="tag">✅ Ton image <code>tonprenom-lamp</code> apparaît dans la liste</span></p>`,
     },
     {
       num: 11,
@@ -165,19 +181,19 @@ chmod +x /start.sh</pre>
       tag: "run",
       content: `
         <p>Stoppe et supprime l'ancien conteneur si besoin :</p>
-        <pre>docker stop claire-lamp && docker rm claire-lamp</pre>
+        <pre>docker stop tonprenom-lamp && docker rm tonprenom-lamp</pre>
         <p>Lance avec <code>/start.sh</code> + bind mount :</p>
-        <pre>docker run -di --name claire-lamp -p 8080:80 \
+        <pre>docker run -di --name tonprenom-lamp -p 8080:80 \
   -v /home/cnd/Bureau/Projets/DevOps/Docker:/var/www/html \
-  claire-lamp /start.sh</pre>
+  tonprenom-lamp /start.sh</pre>
         <div class="card" style="margin-top:.8rem">
           <span class="tag amber">⚠️ Casse Linux</span>
           <p style="margin-top:.5rem">Respecte exactement <code>DevOps</code> avec majuscules</p>
         </div>
         <p style="margin-top:.8rem">Vérifications :</p>
-        <pre>docker exec claire-lamp service apache2 status
-docker exec claire-lamp service mysql status
-docker inspect claire-lamp | grep -A3 Mounts</pre>`,
+        <pre>docker exec tonprenom-lamp service apache2 status
+docker exec tonprenom-lamp service mysql status
+docker inspect tonprenom-lamp | grep -A3 Mounts</pre>`,
     },
     {
       num: 12,
@@ -194,7 +210,7 @@ docker inspect claire-lamp | grep -A3 Mounts</pre>`,
         </table>
         <div class="grid-2" style="margin-top:.8rem">
           <div class="card"><span class="tag">✅ Volume Docker</span><p style="margin-top:.5rem">Visible dans Docker Desktop</p></div>
-          <div class="card"><span class="tag amber">Bind mount</span><p style="margin-top:.5rem">Non visible dans Docker Desktop — mais bien actif.<br>Vérifier via <strong>Containers → claire-lamp → Inspect</strong></p></div>
+          <div class="card"><span class="tag amber">Bind mount</span><p style="margin-top:.5rem">Non visible dans Docker Desktop — mais bien actif.<br>Vérifier via <strong>Containers → tonprenom-lamp → Inspect</strong></p></div>
         </div>`,
     },
   ],
@@ -220,7 +236,10 @@ docker inspect claire-lamp | grep -A3 Mounts</pre>`,
     { etape: "Installer phpMyAdmin", cmd: "apt install phpmyadmin -y" },
     { etape: "Script /start.sh", cmd: "Auto-démarrage apache2 + mysql" },
     { etape: "Quitter le conteneur", cmd: "exit" },
-    { etape: "Commiter l'image", cmd: "docker commit mon-ubuntu claire-lamp" },
+    {
+      etape: "Commiter l'image",
+      cmd: "docker commit mon-ubuntu tonprenom-lamp",
+    },
     {
       etape: "Bind mount",
       cmd: "-v /home/cnd/Bureau/Projets/DevOps/Docker:/var/www/html",

@@ -71,27 +71,46 @@ const DATA = {
     exo1: {
       title: "🐧 Exercice 1 — Ubuntu LAMP",
       content: `
-        <p style="color:var(--text-muted)">Ubuntu 24.04 · Apache · MySQL · PHP · phpMyAdmin</p>
+    <!-- CONSIGNE -->
+    <div class="card" style="margin-bottom:1.5rem;border-color:var(--accent)">
+      <span class="tag" style="margin-bottom:.8rem;display:inline-block">🎯 Objectif</span>
+      <p id="exo1-objectif"></p>
+      <table class="compare-table" style="margin-top:.8rem" id="exo1-config-table">
+        <thead><tr><th>Configuration</th><th>Valeur</th></tr></thead>
+        <tbody id="exo1-config"></tbody>
+      </table>
+    </div>
 
-        <h3 style="margin-top:1.5rem;margin-bottom:.8rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:.4rem">
-          🗂 Commandes utiles — Rappel
-        </h3>
-        <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:.8rem">Clique sur une commande pour la copier</p>
-        <div class="grid-2" id="exo1-rappel"></div>
+    <!-- TOGGLE CORRECTION -->
+    <div style="margin-bottom:1.5rem">
+      <button id="btn-correction" class="nav-pill" style="font-size:.9rem">
+        👁 Voir la correction
+      </button>
+    </div>
 
-        <h3 style="margin-top:1.5rem;margin-bottom:.8rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:.4rem">
-          📋 Étapes
-        </h3>
-        <div class="steps" id="exo1-steps"></div>
+    <!-- RAPPEL -->
+    <h3 style="margin-bottom:.8rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:.4rem">
+      🗂 Commandes utiles — Rappel
+    </h3>
+    <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:.8rem">Clique sur une commande pour la copier</p>
+    <div class="grid-2" id="exo1-rappel"></div>
 
-        <h3 style="margin-top:1.5rem;margin-bottom:.8rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:.4rem">
-          ✅ Bilan
-        </h3>
-        <table class="compare-table">
-          <thead><tr><th>Étape</th><th>Commande</th><th>Statut</th></tr></thead>
-          <tbody id="exo1-bilan"></tbody>
-        </table>
-      `,
+    <!-- CORRECTION (cachée par défaut) -->
+    <div id="exo1-correction" style="display:none">
+      <h3 style="margin-top:1.5rem;margin-bottom:.8rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:.4rem">
+        📋 Correction — Étapes
+      </h3>
+      <div class="steps" id="exo1-steps"></div>
+
+      <h3 style="margin-top:1.5rem;margin-bottom:.8rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:.4rem">
+        ✅ Bilan
+      </h3>
+      <table class="compare-table">
+        <thead><tr><th>Étape</th><th>Commande</th><th>Statut</th></tr></thead>
+        <tbody id="exo1-bilan"></tbody>
+      </table>
+    </div>
+  `,
     },
 
     // ─────────────────────────────────────────────────────── CONCEPTS
