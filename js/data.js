@@ -144,25 +144,14 @@ EXPOSE 80</pre>
 
         <div class="diagram">
           <div class="diag-row">
-            <div class="diag-box amber">📝 Code</div>
+            <div class="diag-box amber">📝 Code (tu écris)</div>
             <span class="diag-arrow">→</span>
-            <div class="diag-box ghost">📄 Dockerfile</div>
+            <div class="diag-box ghost">📄 Dockerfile (tu écris)</div>
             <span class="diag-arrow">→</span>
-            <div class="diag-box green">🖼 Image</div>
+            <div class="diag-box green">🖼 Image (docker build)</div>
             <span class="diag-arrow">→</span>
-            <div class="diag-box cyan">📦 Conteneur</div>
+            <div class="diag-box cyan">📦 Conteneur (docker run)</div>
           </div>
-          <div class="diag-row" style="font-size:.8rem; color:var(--text-muted)">
-            <span style="min-width:90px;text-align:center">tu écris</span>
-            <span style="min-width:40px"></span>
-            <span style="min-width:90px;text-align:center">tu écris</span>
-            <span style="min-width:40px"></span>
-            <span style="min-width:90px;text-align:center">docker build</span>
-            <span style="min-width:40px"></span>
-            <span style="min-width:90px;text-align:center">docker run</span>
-          </div>
-        </div>
-
         <div class="steps" style="margin-top:1.2rem">
           <div class="step">
             <div class="step-num">1</div>
