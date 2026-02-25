@@ -105,7 +105,7 @@ const Renderer = {
     gridEl.addEventListener("click", (e) => {
       const card = e.target.closest(".cmd-card");
       if (!card) return;
-      copyText(card.dataset.cmd).then(() => {
+      navigator.clipboard.writeText(card.dataset.cmd).then(() => {
         const hint = card.querySelector(".copy-hint");
         hint.textContent = "✅ copié !";
         hint.style.color = "var(--accent)";

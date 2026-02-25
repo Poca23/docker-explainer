@@ -50,7 +50,7 @@ const Search = {
     results.addEventListener("click", (e) => {
       const row = e.target.closest(".search-result[data-cmd]");
       if (!row) return;
-      copyText(row.dataset.cmd).then(() => {
+      navigator.clipboard.writeText(row.dataset.cmd).then(() => {
         const code = row.querySelector("code");
         const orig = code.textContent;
         code.textContent = "✅ copié !";
