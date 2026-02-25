@@ -3,6 +3,7 @@ function init() {
   const $ = (id) => document.getElementById(id);
 
   Renderer.header($("header"));
+  Search.init(DATA.commands);
   Renderer.footer($("footer"));
   Renderer.sections($("main"), DATA.sections);
 

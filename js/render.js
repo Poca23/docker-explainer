@@ -17,6 +17,18 @@ const Renderer = {
         <div style="font-size:.7rem;color:var(--text-muted);margin-bottom:.3rem" id="progress-label">Section 1/6</div>
         <div class="progress-bar"><span id="progress-fill" style="width:16%"></span></div>
       </div>
+      <div id="search-wrap">
+<button id="search-btn" title="Rechercher une commande">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="7"/>
+    <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+  </svg>
+</button>      <div id="search-bar">
+        <input id="search-input" type="text" placeholder="Rechercher une commande…" />
+        <div id="search-results"></div>
+      </div>
+    </div>
     `;
   },
 
