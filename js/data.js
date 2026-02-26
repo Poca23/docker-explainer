@@ -468,5 +468,50 @@ volumes:
       ],
       correct: 2,
     },
+    {
+      q: "Que signifie l'option -p 8080:80 dans docker run ?",
+      choices: [
+        "Limiter la RAM à 8080 Mo",
+        "Exposer le port 80 du conteneur sur le port 8080 de l'hôte",
+        "Lancer 8080 conteneurs en parallèle",
+        "Mapper le volume 80 sur le port 8080",
+      ],
+      correct: 1,
+    },
+    {
+      q: "Quel fichier décrit comment construire une image Docker ?",
+      choices: ["compose.yml", "package.json", "Dockerfile", ".dockerignore"],
+      correct: 2,
+    },
+    {
+      q: "Quelle commande supprime tous les conteneurs arrêtés ?",
+      choices: [
+        "docker rm -f all",
+        "docker delete stopped",
+        "docker container prune",
+        "docker stop --all",
+      ],
+      correct: 2,
+    },
+    {
+      q: "Où sont stockées les images Docker publiques par défaut ?",
+      choices: [
+        "GitHub Packages",
+        "Docker Hub",
+        "npm registry",
+        "En local uniquement",
+      ],
+      correct: 1,
+    },
+    {
+      q: "Que fait l'instruction EXPOSE dans un Dockerfile ?",
+      choices: [
+        "Ouvre automatiquement le port sur l'hôte",
+        "Documente le port écouté par le conteneur",
+        "Redirige le trafic réseau",
+        "Démarre le serveur web",
+      ],
+      correct: 1,
+    },
   ],
 };
