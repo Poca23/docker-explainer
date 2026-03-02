@@ -174,7 +174,19 @@ const Renderer = {
   },
 
   footer(el) {
-    el.innerHTML = `<p>Pour les apprenants Docker 🐳 | © 2026 | CND - Web Is Yours</p>`;
+    el.innerHTML = `
+    <button id="footer-logo-btn" title="Retour à C'est quoi ?">
+      <img src="assets/favicon/favicon_docker-explainer-removebg-preview.png" alt="Logo Docker Explainer" />
+    </button>
+    <p>Pour les apprenants Docker | © 2026 | 
+      <a href="https://portfolio-cnd.netlify.app/" target="_blank" rel="noopener" id="portfolio-link">CND - Web Is Yours</a>
+    </p>
+  `;
+
+    document.getElementById("footer-logo-btn").addEventListener("click", () => {
+      document.querySelector('.nav-pill[data-id="intro"]').click();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   },
 
   exo1(data) {

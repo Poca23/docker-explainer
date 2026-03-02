@@ -7,7 +7,6 @@ function init() {
   Renderer.footer($("footer"));
   Renderer.sections($("main"), DATA.sections);
 
-  // ── Clic logo → retour section intro ──
   document.getElementById("logo-btn").addEventListener("click", () => {
     document
       .querySelectorAll(".section")
