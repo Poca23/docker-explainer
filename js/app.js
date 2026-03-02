@@ -15,6 +15,7 @@ function init() {
     Renderer.updateProgress(index, DATA.nav.length);
 
     if (id === "exo1") Renderer.exo1(DATA_EXO1);
+    if (id === "exo2") Renderer.exo2(DATA_EXO2);
     if (id === "commandes") {
       const grid = $("cmd-grid");
       if (grid && !grid.hasChildNodes())

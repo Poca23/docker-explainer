@@ -7,6 +7,7 @@ const DATA = {
     { id: "workflow", label: "🔄 Workflow" },
     { id: "commandes", label: "💻 Commandes" },
     { id: "compose", label: "🧩 Compose" },
+    { id: "exo2", label: "🐧 Exercice 2" },
     { id: "quiz", label: "🎯 Quiz" },
   ],
 
@@ -307,6 +308,49 @@ volumes:
           </tbody>
         </table>
       `,
+    },
+
+    // ─────────────────────────────────────────────────────── EXO 2
+    exo2: {
+      title: "🐳 Exercice 2 — Mon premier Dockerfile",
+      content: `
+    <div class="card" style="margin-bottom:1.5rem">
+      <span class="tag" style="margin-bottom:.6rem;display:inline-block">🎯 Objectif</span>
+      <p id="exo2-objectif"></p>
+    </div>
+
+    <table class="compare-table" style="margin-bottom:1.5rem">
+      <thead><tr><th>Configuration</th><th>Valeur</th></tr></thead>
+      <tbody id="exo2-config"></tbody>
+    </table>
+
+    <div style="margin-bottom:1.5rem">
+      <button id="btn-correction-exo2" class="nav-pill" style="font-size:.9rem">
+        👁 Voir la correction
+      </button>
+    </div>
+
+    <h3 style="margin-bottom:.8rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:.4rem">
+      🗂 Commandes utiles — Rappel
+    </h3>
+    <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:.8rem">Clique sur une commande pour la copier</p>
+    <div class="grid-2" id="exo2-rappel"></div>
+
+    <div id="exo2-correction" style="display:none">
+      <h3 style="margin-top:1.5rem;margin-bottom:.8rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:.4rem">
+        📋 Correction — Étapes
+      </h3>
+      <div class="steps" id="exo2-steps"></div>
+
+      <h3 style="margin-top:1.5rem;margin-bottom:.8rem;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:.4rem">
+        ✅ Bilan
+      </h3>
+      <table class="compare-table">
+        <thead><tr><th>Étape</th><th>Commande</th><th>Statut</th></tr></thead>
+        <tbody id="exo2-bilan"></tbody>
+      </table>
+    </div>
+  `,
     },
 
     // ─────────────────────────────────────────────────────── QUIZ

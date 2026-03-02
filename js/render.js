@@ -268,4 +268,90 @@ const Renderer = {
         .join("");
     }
   },
+  exo2(data) {
+    const objEl = document.getElementById("exo2-objectif");
+    if (objEl) objEl.textContent = data.consigne.objectif;
+
+    const cfgEl = document.getElementById("exo2-config");
+    if (cfgEl && !cfgEl.hasChildNodes()) {
+      cfgEl.innerHTML = data.consigne.config
+        .map(
+          (c) => `<tr><td>${c.label}</td><td><code>${c.val}</code></td></tr>`,
+        )
+        .join("");
+    }
+
+    const btnCorr = document.getElementById("btn-correction-exo2");
+    const corrEl = document.getElementById("exo2-correction");
+    if (btnCorr && !btnCorr._bound) {
+      btnCorr._bound = true;
+      btnCorr.addEventListener("click", () => {
+        const visible = corrEl.style.display !== "none";
+        corrEl.style.display = visible ? "none" : "block";
+        btnCorr.textContent = visible
+          ? "👁 Voir la correction"
+          : "🙈 Masquer la correction";
+      });
+    }
+
+    const rappelEl = document.getElementById("exo2-rappel");
+    if (rappelEl && !rappelEl.hasChildNodes()) {
+      rappelEl.innerHTML = data.rappel
+        .map(
+          (r) => `
+        <div class="card cmd-card" style="cursor:pointer" data-cmd="${r.cmd}" title="Cliquer pour copier">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:.4rem;margin-bottom:.4rem">
+            <span class="copy-hint" style="font-size:.7rem;color:var(--text-muted)">📋 copier</span>
+          </div>
+          <code style="font-size:.85rem;display:block;margin-bottom:.4rem">${r.cmd}</code>
+          <p style="font-size:.8rem;color:var(--text-muted)">${r.desc}</p>
+        </div>`,
+        )
+        .join("");
+
+      rappelEl.addEventListener("click", (e) => {
+        const card = e.target.closest(".cmd-card");
+        if (!card) return;
+        navigator.clipboard.writeText(card.dataset.cmd).then(() => {
+          const hint = card.querySelector(".copy-hint");
+          hint.textContent = "✅ copié !";
+          hint.style.color = "var(--accent)";
+          setTimeout(() => {
+            hint.textContent = "📋 copier";
+            hint.style.color = "var(--text-muted)";
+          }, 1500);
+        });
+      });
+    }
+
+    const stepsEl = document.getElementById("exo2-steps");
+    if (stepsEl && !stepsEl.hasChildNodes()) {
+      stepsEl.innerHTML = data.steps
+        .map(
+          (s) => `
+        <div class="step">
+          <div class="step-num">${s.num}</div>
+          <div class="compare-table">
+            <h3>${s.title} <span class="tag">${s.tag}</span></h3>
+            ${s.content}
+          </div>
+        </div>`,
+        )
+        .join("");
+    }
+
+    const bilanEl = document.getElementById("exo2-bilan");
+    if (bilanEl && !bilanEl.hasChildNodes()) {
+      bilanEl.innerHTML = data.bilan
+        .map(
+          (b) => `
+        <tr>
+          <td>${b.etape}</td>
+          <td><code>${b.cmd}</code></td>
+          <td style="text-align:center">✅</td>
+        </tr>`,
+        )
+        .join("");
+    }
+  },
 };
