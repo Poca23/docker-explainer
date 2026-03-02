@@ -244,7 +244,7 @@ const Renderer = {
           (s) => `
         <div class="step">
           <div class="step-num">${s.num}</div>
-          <div>
+          <div class="compare-table">
             <h3>${s.title} <span class="tag">${s.tag}</span></h3>
             ${s.content}
           </div>

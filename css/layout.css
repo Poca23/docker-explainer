@@ -33,7 +33,6 @@
 #nav::-webkit-scrollbar {
   display: none;
 }
-
 .nav-pill {
   flex-shrink: 0;
   padding: 0.35rem 0.9rem;
@@ -60,7 +59,7 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 1.5rem var(--gap) 4rem;
-  overflow: hidden; /* ← fix débordement global */
+  overflow: hidden;
 }
 
 /* ── Section ── */
@@ -74,10 +73,7 @@
 /* ── Grid 2 colonnes ── */
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(min(260px, 100%), 1fr)
-  ); /* ← fix mobile */
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: var(--gap);
   margin-top: var(--gap);
 }
@@ -98,7 +94,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: border-color 0.2s;
-  min-width: 0; /* ← fix flex overflow */
+  min-width: 0;
 }
 .step:hover {
   border-color: var(--accent2);
@@ -118,8 +114,8 @@
 }
 .step > div {
   min-width: 0;
-  overflow: hidden;
-} /* ← fix texte step */
+  overflow: hidden; /* ← empêche le débordement global */
+}
 
 /* ── Comparatif table ── */
 .compare-table {
@@ -127,15 +123,18 @@
   border-collapse: collapse;
   margin-top: var(--gap);
   font-size: 0.9rem;
-  display: block; /* ← permet overflow-x */
-  overflow-x: auto;
+  display: block;
+  overflow-x: auto; /* ← scroll global (bilan, etc.) */
+}
+.step .compare-table {
+  overflow-x: auto; /* ← scroll ciblé dans les steps */
 }
 .compare-table th,
 .compare-table td {
   border: 1px solid var(--border);
   padding: 0.6rem 0.8rem;
   text-align: left;
-  white-space: nowrap; /* ← garde lisible sur mobile */
+  white-space: nowrap;
 }
 .compare-table th {
   background: var(--tag-bg);
@@ -220,7 +219,7 @@
   color: var(--text);
   background: var(--bg-card);
   transition: all 0.2s;
-  width: 100%; /* ← pleine largeur */
+  width: 100%;
 }
 .quiz-btn:hover:not(:disabled) {
   border-color: var(--accent2);

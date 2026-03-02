@@ -70,7 +70,8 @@ pre {
   border: 1px solid var(--tag-border);
   color: var(--accent);
   font-size: 0.75rem;
-  padding: 0.15em 0.6em;
+  padding: 0.35em 0.6em;
+  margin-top: 0.1rem;
   border-radius: 20px;
   font-weight: 600;
   letter-spacing: 0.05em;
