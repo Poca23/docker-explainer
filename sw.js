@@ -1,4 +1,4 @@
-const CACHE = "docker-guide-v4";
+const CACHE = "docker-guide-v5";
 const FILES = [
   "./",
   "./index.html",
