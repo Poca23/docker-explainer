@@ -23,6 +23,10 @@
 
 /* ── Nav pills ── */
 #nav {
+  position: sticky;
+  top: 70px;
+  z-index: 99;
+  background: var(--bg);
   display: flex;
   gap: 0.5rem;
   padding: 0.8rem var(--gap);
@@ -33,6 +37,7 @@
 #nav::-webkit-scrollbar {
   display: none;
 }
+
 .nav-pill {
   flex-shrink: 0;
   padding: 0.35rem 0.9rem;
@@ -114,7 +119,7 @@
 }
 .step > div {
   min-width: 0;
-  overflow: hidden; /* ← empêche le débordement global */
+  overflow: hidden;
 }
 
 /* ── Comparatif table ── */
@@ -124,10 +129,10 @@
   margin-top: var(--gap);
   font-size: 0.9rem;
   display: block;
-  overflow-x: auto; /* ← scroll global (bilan, etc.) */
+  overflow-x: auto;
 }
 .step .compare-table {
-  overflow-x: auto; /* ← scroll ciblé dans les steps */
+  overflow-x: auto;
 }
 .compare-table th,
 .compare-table td {
@@ -258,6 +263,9 @@
   }
   #progress-wrap {
     display: none;
+  }
+  #nav {
+    top: 60px; /* header plus petit sur mobile */
   }
   #main {
     padding: 1rem var(--gap) 3rem;
