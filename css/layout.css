@@ -21,10 +21,37 @@
   height: 32px;
 }
 
+/* ── Logo bouton ── */
+#logo-btn {
+  display: flex;
+  align-items: center;
+  padding: 0.2rem;
+  border-radius: var(--radius);
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+#logo-btn img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+#logo-btn:hover img {
+  transform: scale(1.15) rotate(-5deg);
+  filter: drop-shadow(0 0 6px var(--accent2));
+}
+#logo-btn:active img {
+  transform: scale(0.9) rotate(5deg);
+  filter: drop-shadow(0 0 10px var(--accent));
+}
+
 /* ── Nav pills ── */
 #nav {
   position: sticky;
-  top: 70px;
+  top: 85px;
   z-index: 99;
   background: var(--bg);
   display: flex;
@@ -265,7 +292,7 @@
     display: none;
   }
   #nav {
-    top: 60px; /* header plus petit sur mobile */
+    top: 80px;
   }
   #main {
     padding: 1rem var(--gap) 3rem;

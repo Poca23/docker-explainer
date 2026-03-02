@@ -7,6 +7,19 @@ function init() {
   Renderer.footer($("footer"));
   Renderer.sections($("main"), DATA.sections);
 
+  // ── Clic logo → retour section intro ──
+  document.getElementById("logo-btn").addEventListener("click", () => {
+    document
+      .querySelectorAll(".section")
+      .forEach((s) => s.classList.remove("active"));
+    $("sec-intro").classList.add("active");
+    document
+      .querySelectorAll(".nav-pill")
+      .forEach((p) => p.classList.remove("active"));
+    document.querySelector(".nav-pill")?.classList.add("active");
+    Renderer.updateProgress(0, DATA.nav.length);
+  });
+
   Renderer.nav($("nav"), DATA.nav, (id, index) => {
     document
       .querySelectorAll(".section")

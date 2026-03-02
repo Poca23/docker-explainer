@@ -4,10 +4,9 @@ const Renderer = {
   header(el) {
     el.innerHTML = `
       <div class="header-logo">
-        <svg viewBox="0 0 40 40" fill="none">
-          <rect width="40" height="40" rx="8" fill="#1d6f42"/>
-          <text x="8" y="28" font-size="22" fill="white">🐳</text>
-        </svg>
+        <button id="logo-btn" title="Retour à l'accueil">
+          <img src="assets/favicon/favicon_docker-explainer-removebg-preview.png" alt="Docker Explainer" />
+        </button>
         <div>
           <h1 style="font-size:1.1rem;line-height:1">Docker</h1>
           <span style="font-size:.75rem;color:var(--text-muted)">Guide visuel interactif</span>
@@ -18,17 +17,18 @@ const Renderer = {
         <div class="progress-bar"><span id="progress-fill" style="width:16%"></span></div>
       </div>
       <div id="search-wrap">
-<button id="search-btn" title="Rechercher une commande">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="11" cy="11" r="7"/>
-    <line x1="16.5" y1="16.5" x2="22" y2="22"/>
-  </svg>
-</button>      <div id="search-bar">
-        <input id="search-input" type="text" placeholder="Rechercher une commande…" />
-        <div id="search-results"></div>
+        <button id="search-btn" title="Rechercher une commande">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+          </svg>
+        </button>
+        <div id="search-bar">
+          <input id="search-input" type="text" placeholder="Rechercher une commande…" />
+          <div id="search-results"></div>
+        </div>
       </div>
-    </div>
     `;
   },
 
