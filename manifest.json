@@ -1,7 +1,7 @@
 {
   "name": "Docker — Guide Visuel",
   "short_name": "Docker Guide",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#0d1117",
   "theme_color": "#1d6f42",
