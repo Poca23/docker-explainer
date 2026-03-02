@@ -557,5 +557,50 @@ volumes:
       ],
       correct: 1,
     },
+    {
+      q: "Que fait la commande docker stop ?",
+      choices: [
+        "Supprime le conteneur",
+        "Supprime l'image",
+        "Arrête proprement le conteneur",
+        "Met le conteneur en pause",
+      ],
+      correct: 2,
+    },
+    {
+      q: "Quelle instruction Dockerfile définit la commande de démarrage ?",
+      choices: ["RUN", "START", "CMD", "EXEC"],
+      correct: 2,
+    },
+    {
+      q: "À quoi sert docker exec -it <id> bash ?",
+      choices: [
+        "Créer un nouveau conteneur bash",
+        "Ouvrir un terminal interactif dans un conteneur existant",
+        "Exécuter bash puis stopper le conteneur",
+        "Installer bash dans le conteneur",
+      ],
+      correct: 1,
+    },
+    {
+      q: "Que fait docker system prune -af ?",
+      choices: [
+        "Supprime uniquement les images inutilisées",
+        "Redémarre tous les conteneurs",
+        "Nettoie conteneurs, images et cache en une commande",
+        "Désinstalle Docker",
+      ],
+      correct: 2,
+    },
+    {
+      q: "Quelle est la différence entre RUN et CMD dans un Dockerfile ?",
+      choices: [
+        "RUN s'exécute au build, CMD au démarrage du conteneur",
+        "CMD s'exécute au build, RUN au démarrage du conteneur",
+        "Ce sont des synonymes",
+        "RUN lance le conteneur, CMD le stoppe",
+      ],
+      correct: 0,
+    },
   ],
 };
