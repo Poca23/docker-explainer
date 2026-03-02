@@ -1,4 +1,4 @@
-const CACHE = "docker-guide-v3";
+const CACHE = "docker-guide-v4";
 const FILES = [
   "./",
   "./index.html",
@@ -18,6 +18,7 @@ const FILES = [
   "./assets/favicon/apple-touch-icon.png",
   "./assets/favicon/favicon-32x32.png",
   "./assets/favicon/favicon-16x16.png",
+  "./manifest.json",
 ];
 
 self.addEventListener("install", (e) =>
